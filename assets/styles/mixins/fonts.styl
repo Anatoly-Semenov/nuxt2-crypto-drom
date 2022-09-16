@@ -1,0 +1,21 @@
+// Fonts mixin
+font-url(filename)
+	return '~assets/fonts/' + filename
+
+webfont(family, filename, weight = 400)
+	@font-face
+		font-family: family
+		src: url(font-url(filename + '.eot'))
+		src: url(font-url(filename + '.eot?#iefix')) format('embedded-opentype'),
+			url(font-url(filename + '.woff')) format('woff'),
+			url(font-url(filename + '.ttf')) format('truetype')
+		font-weight: weight
+		font-style: normal
+
+// Чтобы добавить шрифт, нужно использовать миксин:
+// webfont('Имя шрифта для css', 'Путь к файлу шрифта, относительно assets/fonts/', жирность шрифта в числовом значении)
+
+webfont('ubuntu', 'ubuntu/ubuntu-regular', $regular)
+webfont('ubuntu', 'ubuntu/ubuntu-medium', $medium)
+webfont('ubuntu', 'ubuntu/ubuntu-bold', $bold)
+
