@@ -1,0 +1,84 @@
+// В этом файле общие стили для тэгов
+table
+	border-spacing 0
+
+html
+	font-size 16px
+	box-sizing border-box
+	font-weight $regular
+	color $color-text
+	overflow-x hidden
+
+*
+*:before
+*:after
+	box-sizing border-box
+	margin 0
+	padding 0
+
+*:disabled
+	opacity .5
+
+button
+	padding 0
+	margin 0
+	outline none
+	border none
+	cursor pointer
+	background none
+	font-size 14px
+	line-height 1.43
+	text-align center
+	text-transform none
+
+for num in (1..6)
+	h{num}
+		font-weight $regular
+		margin 0
+
+body
+	font-family $font-text !important
+	background $color-background-dark
+	custom-scrollbar()
+
+	& h1, & h2, & h3, & h4, & h5, & h6, & p
+		color $color-text
+		margin 0
+
+	& p
+		font-size 16px
+		line-height 1.2
+
+a
+	text-decoration none
+
+	&:hover
+		text-decoration none
+		color $color-link-hover
+
+	&:focus
+		text-decoration none
+
+ul
+	margin 0
+
+input[type=text]::-ms-clear
+	display none
+	width 0
+	height 0
+input[type=text]::-ms-reveal
+	display none
+	width 0
+	height 0
+
+input[type="search"]::-webkit-search-decoration
+input[type="search"]::-webkit-search-cancel-button
+input[type="search"]::-webkit-search-results-button
+input[type="search"]::-webkit-search-results-decoration
+	display none
+
+hr
+	padding 0
+	height 0
+	border none
+	border-top 1px solid $color-border
