@@ -24,7 +24,7 @@ const config: NuxtConfig = {
 	css: ["~/assets/styles/index.styl"],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: ["@/plugins/global", "@/plugins/ant-design"],
+	plugins: ["~/plugins/global", "~/plugins/ant-design"],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,

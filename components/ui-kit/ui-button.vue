@@ -20,7 +20,7 @@ import { Button } from "ant-design-vue"
 Vue.use(Button)
 
 // Types
-import { UiButton } from "@/types"
+import { UiButton } from "~/types"
 
 export default Vue.extend({
 	name: "ui-button",
