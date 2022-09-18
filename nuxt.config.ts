@@ -38,7 +38,9 @@ const config: NuxtConfig = {
 	// Modules: https://go.nuxtjs.dev/config-modules
 	modules: [
 		// https://go.nuxtjs.dev/axios
-		"@nuxtjs/axios"
+		"@nuxtjs/axios",
+		// https://github.com/Developmint/nuxt-svg-loader#readme
+		"nuxt-svg-loader"
 	],
 
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
