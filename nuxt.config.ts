@@ -20,11 +20,16 @@ const config: NuxtConfig = {
 		link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
 	},
 
+	// Init .ENV variables
+	env: {
+		BASE_API_URL: process.env.BASE_API_URL || "localhost:3000"
+	},
+
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: ["~/assets/styles/index.styl"],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: ["~/plugins/global", "~/plugins/ant-design"],
+	plugins: ["~/plugins/global", "~/plugins/ant-design", "~/plugins/api"],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
