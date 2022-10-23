@@ -33,6 +33,7 @@ const config: NuxtConfig = {
 		"~/plugins/global",
 		"~/plugins/ant-design",
 		{ src: "~/plugins/api", ssr: false },
+		{ src: "~/plugins/stop-events", ssr: false }
 	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
