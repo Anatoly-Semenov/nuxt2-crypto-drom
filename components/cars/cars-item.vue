@@ -1,5 +1,9 @@
 <template>
-	<nuxt-link :to="`/cars/${id}`" class="cars__item">
+	<nuxt-link
+		class="cars__item"
+		:class="{ _loading: isLoading }"
+		:to="`/cars/${id}`"
+	>
 		<img :src="img" class="cars__item-img" />
 		<div class="cars__item-info">
 			<p class="cars__item-title">
@@ -19,32 +23,16 @@
 import Vue, { PropType } from "vue"
 
 // Types
-interface Car {
-	id: number
-	brand: string
-	model: string
-	year: number
-	hp: number
-	price: {
-		rub: number
-		eth: number
-		btc: number
-		usdt: number
-	}
-	color: string
-	region: {
-		id: number
-		name: string
-	}
-	created_at: string
-	edited_at: string
-	img_preview: string
-}
+import type { CarsService } from "@drom/types"
 
 export default Vue.extend({
 	name: "cars-item",
 	props: {
-		data: Object as PropType<Car>
+		data: Object as PropType<CarsService.Car>,
+		isLoading: {
+			type: Boolean,
+			default: false
+		}
 	},
 	computed: {
 		id(): number {
@@ -57,10 +45,14 @@ export default Vue.extend({
 			return this.data?.img_preview || ""
 		},
 		priceFiat(): string {
-			return `${this.data.price.rub} ₽`
+			// Todo: temporary hide
+			// return `${this.data.price.rub} ₽`
+			return "0 ₽"
 		},
 		priceCrypto(): string {
-			return this.data.price.usdt ? `${this.data.price.usdt} USDT` : ""
+			return "0 USDT"
+			// Todo: temporary hide
+			// return this.data.price.usdt ? `${this.data.price.usdt} USDT` : ""
 		}
 	}
 })

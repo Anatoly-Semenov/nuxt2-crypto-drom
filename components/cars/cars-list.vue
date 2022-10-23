@@ -12,7 +12,12 @@
 			</a-select>
 		</div>
 		<div class="cars__list-items">
-			<cars-item v-for="(car, index) in cars" :key="index" :data="car" />
+			<cars-item
+				v-for="(car, index) in cars"
+				:key="index"
+				:data="car"
+				:isLoading="isLoading"
+			/>
 		</div>
 		<a-pagination
 			class="cars__list-pagination"
@@ -25,10 +30,17 @@
 
 <script lang="ts">
 import Vue from "vue"
+import { mapActions, mapGetters } from "vuex"
 
 // Components
 const carsItem = () =>
 	import(/* webpackChunkName: "cars-item" */ "~/components/cars/cars-item.vue")
+
+// Mocks
+import { carsList as loadingCars } from "~/static/mocks"
+
+// Types
+import type { CarsService } from "@drom/types"
 
 export default Vue.extend({
 	name: "cars-list",
@@ -37,6 +49,7 @@ export default Vue.extend({
 	},
 	data() {
 		return {
+			isLoading: false as boolean,
 			page: 1 as number,
 			sortList: [
 				{
@@ -51,56 +64,26 @@ export default Vue.extend({
 					id: 3,
 					text: "Сначала дорогие"
 				}
-			],
-			cars: [
-				{
-					id: 1,
-					brand: "BMW",
-					model: "5-Series",
-					year: 2019,
-					hp: 190,
-					price: {
-						rub: 3450000,
-						eth: 1,
-						btc: 1,
-						usdt: 60000
-					},
-					color: "gray",
-					region: {
-						id: 1,
-						name: "Москва"
-					},
-					created_at: "18.08.2022",
-					edited_at: "18.08.2022",
-					img_preview:
-						"https://s.auto.drom.ru/photo/P9f23IBeNf6zBcbv0pTdh2sApB3ei-Ja0Dj6yUeDbALrZ6SUOY1uRoBAS-JvdGmegtTvNnOTHbOQgaBDSS5CxOnJkyQ.jpg"
-				},
-				{
-					id: 2,
-					brand: "BMW",
-					model: "3-Series",
-					year: 2019,
-					hp: 190,
-					price: {
-						rub: 3450000,
-						eth: 1,
-						btc: 1,
-						usdt: 60000
-					},
-					color: "gray",
-					region: {
-						id: 1,
-						name: "Москва"
-					},
-					created_at: "18.08.2022",
-					edited_at: "18.08.2022",
-					img_preview:
-						"https://s.auto.drom.ru/photo/P9f23IBeNf6zBcbv0pTdh2sApB3ei-Ja0Dj6yUeDbALrZ6SUOY1uRoBAS-JvdGmegtTvNnOTHbOQgaBDSS5CxOnJkyQ.jpg"
-				}
 			]
 		}
 	},
+	async fetch(): Promise<void> {
+		this.isLoading = true
+		await this.fetchCars()
+		this.isLoading = false
+	},
+	computed: {
+		...mapGetters({
+			getCars: "cars/getCars"
+		}),
+		cars(): CarsService.Car[] {
+			return this.isLoading ? loadingCars : this.getCars
+		}
+	},
 	methods: {
+		...mapActions({
+			fetchCars: "cars/fetchCars"
+		}),
 		setSort(): void {
 			return
 		}
