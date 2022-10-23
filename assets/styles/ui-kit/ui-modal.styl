@@ -1,0 +1,124 @@
+.ui-modal
+	&._max-height .ant-modal-body
+		max-height calc(100vh - 270px)
+		overflow auto
+		custom-scrollbar()
+
+	&._transparent-content
+		& .ant-modal-content
+			background transparent
+			box-shadow none
+
+	&._fullscreen
+		& .ant-modal
+			height 100%
+			width 100% !important
+			margin-top -100px
+
+			&-header, &-content
+				border-radius 0
+
+			&-body
+				height calc(100vh - 140px)
+				overflow-y auto
+				custom-scrollbar()
+
+	&._fullscreen._disableFooter .ant-modal-body
+		height calc(100vh - 70px)
+
+	&__icons
+		height 100%
+		display flex
+		justify-content flex-end
+		align-items center
+		margin-right $gap
+
+		& > *
+			padding 0 $gap-small
+
+			& path
+				transition fill $transition
+
+			&:hover path
+				fill $color-link
+
+		& i
+			font-size 18px
+
+		& button
+			flex-center()
+
+	& .ant-modal
+		transitionMixin(height, width, margin-top)
+
+		&-header, &-content
+			background-color $color-background-secondary
+			color $color-text
+			transition border-radius $transition
+
+		&-header
+			border-top-left-radius $border-radius
+			border-top-right-radius $border-radius
+
+		&-header, &-footer
+			display flex
+			justify-content space-between
+			align-items center
+			height 70px
+			border-color $color-border
+			padding $gap
+
+		&-content
+			border-radius $border-radius
+
+		&-body
+			transition height $transition
+
+		&-footer
+			justify-content flex-end
+
+			& > div
+				display flex
+
+				& .ant-btn
+					height 40px
+					transitionMixin(box-shadow, border-color, background-color, background, color)
+					background transparent
+					color $color-link
+					border 1px solid $color-link
+					box-shadow 2px 5px 11px rgba(72, 102, 162, 0.07)
+
+					&:hover
+						border-color $color-link-hover
+						color $color-link-hover
+
+					&.ant-btn-primary
+						background $gradient-ui
+						box-shadow $box-shadow-ui
+						color $color-text
+						border none
+
+						&:focus
+							background-color $color-ui
+							border-color $color-ui
+
+						&:hover
+							background $color-ui
+							box-shadow $box-shadow-ui-hover
+							color $color-text
+
+		&-title
+			color $color-text
+			font-size 24px
+			font-weight $bold
+
+		&-close-x
+			display flex
+			justify-content center
+			align-items center
+			height 70px
+			width 70px
+			color $color-text
+
+	& .ui-table .ant-table-tbody > tr
+		background transparent
