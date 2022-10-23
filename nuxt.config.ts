@@ -22,14 +22,18 @@ const config: NuxtConfig = {
 
 	// Init .ENV variables
 	env: {
-		BASE_API_URL: process.env.BASE_API_URL || "localhost:3000"
+		BASE_API_URL: process.env.BASE_API_URL || "http://localhost:3000"
 	},
 
 	// Global CSS: https://go.nuxtjs.dev/config-css
 	css: ["~/assets/styles/index.styl"],
 
 	// Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-	plugins: ["~/plugins/global", "~/plugins/ant-design", "~/plugins/api"],
+	plugins: [
+		"~/plugins/global",
+		"~/plugins/ant-design",
+		{ src: "~/plugins/api", ssr: false },
+	],
 
 	// Auto import components: https://go.nuxtjs.dev/config-components
 	components: true,
@@ -51,7 +55,7 @@ const config: NuxtConfig = {
 	// Axios module configuration: https://go.nuxtjs.dev/config-axios
 	axios: {
 		// Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-		baseURL: "/"
+		baseURL: process.env.BASE_API_URL
 	},
 
 	// Build Configuration: https://go.nuxtjs.dev/config-build
