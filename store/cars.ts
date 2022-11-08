@@ -87,7 +87,7 @@ export const actions: ActionTree<RootState, RootState> = {
 			car
 		}: {
 			id: string
-			car: CarsService.CreateCarDto
+			car: CarsService.CarCreate
 		}
 	): Promise<void> {
 		await this.$carsApi
@@ -106,7 +106,7 @@ export const actions: ActionTree<RootState, RootState> = {
 			car
 		}: {
 			id: string
-			car: CarsService.CreateCarDto
+			car: CarsService.CarCreate
 		}
 	): Promise<void> {
 		await this.$carsApi

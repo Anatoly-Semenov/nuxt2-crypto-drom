@@ -39,15 +39,14 @@ export default Vue.extend({
 			return this.data.id
 		},
 		title(): string {
-			return `${this.data?.brand} ${this.data?.model}, ${this.data?.year}`
+			return `${this.data?.brand.name} ${this.data?.model.name}, ${this.data?.year}`
 		},
 		img(): string {
 			return this.data?.img_preview || ""
 		},
 		priceFiat(): string {
 			// Todo: temporary hide
-			// return `${this.data.price.rub} ₽`
-			return "0 ₽"
+			return `${this.data?.price_rub} ₽`
 		},
 		priceCrypto(): string {
 			return "0 USDT"
