@@ -1,0 +1,36 @@
+.cars__item
+	display flex
+	align-items flex-start
+	max-width 900px
+	padding 20px
+
+	&:not(:last-child)
+		border-bottom $border
+
+	&-img
+		height 204px
+		width 272px
+		object-fit cover
+		border-radius $border-radius
+
+	&-info, &-price
+		display flex
+		flex-direction column
+
+	&-info
+		margin-left 20px
+
+	&-title
+		font-size 16px
+
+	&-price
+		align-items flex-end
+		margin-left auto
+
+		& .ant-tag
+			margin-top 10px
+
+	&-fiat
+		font-size 20px
+		font-weight $bold
+

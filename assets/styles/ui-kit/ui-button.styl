@@ -1,2 +1,76 @@
 .ui-button
-	opacity 1
+	display flex
+	align-items center
+	justify-content center
+	height 40px
+	width fit-content
+	transition background-color $transition
+	padding 13px 15px
+	border none
+	text-shadow none
+	border-radius $border-radius
+	font-weight $bold
+
+	&:hover
+		background-color $color-ui-hover
+
+	&.ant-btn
+		&.ant-btn-primary
+			transition-property background-color, background, color
+			transition-duration 0.4s
+			transition-timing-function ease
+			transition-delay 0s
+			background-color $color-ui
+			color $color-text-inversion
+
+			& path
+				fill $color-text-inversion
+
+			&:focus
+				background-color $color-ui
+				border-color $color-ui
+
+			&:hover
+				background-color $color-ui-hover
+				border-color $color-ui-hover
+
+			&:active
+				background-color $color-ui-active
+				border-color $color-ui-active
+
+		&.ant-btn-default
+			color $color-text-inversion
+			background transparent
+			border-color $color-ui
+			transition color $transition
+
+			&:hover
+				color $color-ui
+				border-color $color-ui-hover
+
+		&.ant-btn-link
+			color $color-link
+			transition color $transition
+			background-color transparent
+
+			& path
+				fill $color-link
+				transition fill $transition
+
+			&:hover
+				color $color-link-hover
+
+				& path
+					fill $color-link-hover
+
+		&.ant-btn-danger
+			background-color $color-error
+
+			&:hover
+				background-color $color-error-hover
+
+			&:active
+				background-color $color-error-active
+
+	& svg
+		margin-right 10px

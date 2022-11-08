@@ -1,0 +1,32 @@
+.layout
+	min-height 100vh
+	width 100%
+	background-color $color-background
+	flex-direction column
+	overflow-x hidden
+
+	&, &-content
+		display flex
+		justify-content flex-start
+		align-items flex-start
+
+	&__container
+		display flex
+		flex-direction column
+		width 1300px
+		margin-left auto
+		margin-right auto
+
+	&__content
+		width 100%
+		margin-top 40px
+		margin-bottom 40px
+		min-height calc(100vh - 650px)
+
+	&__footer
+		width 100%
+		height auto
+		margin-top 40px
+
+		& img
+			width 100%

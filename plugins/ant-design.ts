@@ -6,13 +6,17 @@ import type { Notification } from "ant-design-vue/types/notification"
 import type { Message } from "ant-design-vue/types/message"
 
 import {
+	Card,
+	Pagination,
 	Tooltip,
+	Tag,
 	Table,
 	Popover,
 	Menu,
 	Modal,
 	Result,
 	Tabs,
+	Select,
 	notification,
 	message
 } from "ant-design-vue"
@@ -22,12 +26,16 @@ Vue.prototype.$notification = notification
 Vue.prototype.$message = message
 Vue.prototype.$confirm = Modal.confirm
 
+Vue.use(Card)
+Vue.use(Pagination)
 Vue.use(Tooltip)
+Vue.use(Tag)
 Vue.use(Table)
 Vue.use(Popover)
 Vue.use(Menu)
 Vue.use(Result)
 Vue.use(Tabs)
+Vue.use(Select)
 
 const messagePlugin: Plugin = (_, inject) => {
 	inject("notification", notification)

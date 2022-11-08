@@ -1,11 +1,29 @@
 // Цвета
 $color-ui = var(--color-ui)
 $color-ui-hover = var(--color-ui-hover)
+$color-ui-active = var(--color-ui-active)
+$color-highlight = var(--color-highlight)
+$color-highlight-hover = var(--color-highlight-hover)
+$color-highlight-active = var(--color-highlight-active)
 $color-border = var(--color-border)
 $color-text = var(--color-text)
 $color-text-light = var(--color-text-light)
+$color-text-inversion = var(--color-text-inversion)
+$color-background = var(--color-background)
+$color-background-hover = var(--color-background-hover)
+$color-background-secondary = var(--color-background-secondary)
+$color-background-inversion = var(--color-background-inversion)
 $color-active = var(--color-avtive)
 $color-active = var(--color-avtive)
+
+// Закругления
+$border-radius = 6px
+$border-radius-big = 12px
+$border-radius-small = 4px
+$border-radius-circle = 1000px
+
+// Обводка
+$border = 1px solid $color-border
 
 // Шрифты
 $font-text = "ubuntu"
@@ -15,12 +33,32 @@ $regular = 300
 $medium = 400
 $bold = 900
 
+// Переходы
+$transition = 0.4s ease
+
+// Отступы
+$gap-extra-small = 4px
+$gap-small = 8px
+$gap = 16px
+$gap-medium = 24px
+$gap-large = 32px
+$gap-extra-large = 48px
+
 :root
 	--color-ui #dc0019
 	--color-ui-hover #bd0016
+	--color-ui-active #bd001695
+	--color-highlight #1b75cb
+	--color-highlight-hover #1865b0
+	--color-highlight-active #1865b095
 	--color-border #f5f5f5
 	--color-text #000000
 	--color-text-light #999999
+	--color-text-inversion #FFFFFF
+	--color-background #FFFFFF
+	--color-background-hover #262626
+	--color-background-secondary #F5F5F5
+	--color-background-inversion #000000
 	--color-active #85b63e
 	--color-link #1b75cb
 	--color-link-hover var(-color-ui-hover)
