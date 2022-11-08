@@ -976,11 +976,11 @@
 
 "@drom/requests@git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/requests-crypto-drom.git":
   version "0.1.0"
-  resolved "git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/requests-crypto-drom.git#53876819f985695e9ae2af44ad11258cd0e61cc8"
+  resolved "git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/requests-crypto-drom.git#889095fae3193fb933c000e1464fe0b31e4632be"
 
 "@drom/types@git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/types-crypto-drom.git":
   version "0.1.0"
-  resolved "git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/types-crypto-drom.git#d927984e76b01173f86003197338439d2cdf6cac"
+  resolved "git+https://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:x-oauth-basic@github.com/Anatoly-Semenov/types-crypto-drom.git#9738fb7abc73b520e7f7fa0522deb7bd5237711d"
 
 "@eslint/eslintrc@^1.3.2":
   version "1.3.2"
