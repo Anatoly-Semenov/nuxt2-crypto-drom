@@ -4,7 +4,10 @@ import type { CarsService } from "@drom/types"
 
 export const state = () => ({
 	list: null as null | CarsService.Car[],
-	detail: null as null | CarsService.Car
+	detail: null as null | CarsService.Car,
+	brands: null as null | CarsService.Brand[],
+	models: null as null | CarsService.Model[],
+	colors: null as null | CarsService.Color[]
 })
 
 export type RootState = ReturnType<typeof state>
@@ -34,6 +37,15 @@ export const mutations: MutationTree<RootState> = {
 		} else {
 			state.list = [payload]
 		}
+	},
+	setBrands(state, payload): void {
+		state.brands = payload
+	},
+	setModels(state, payload): void {
+		state.models = payload
+	},
+	setColors(state, payload): void {
+		state.colors = payload
 	}
 }
 
@@ -105,10 +117,43 @@ export const actions: ActionTree<RootState, RootState> = {
 			.catch((error: any) => {
 				console.error(error)
 			})
+	},
+	async fetchBrands({ commit }): Promise<void> {
+		await this.$carsApi
+			.getBrandsList()
+			.then((data) => {
+				commit("setBrands", data)
+			})
+			.catch((error: any) => {
+				console.error(error)
+			})
+	},
+	async fetchModels({ commit }): Promise<void> {
+		await this.$carsApi
+			.getModelsList()
+			.then((data) => {
+				commit("setModels", data)
+			})
+			.catch((error: any) => {
+				console.error(error)
+			})
+	},
+	async fetchColors({ commit }): Promise<void> {
+		await this.$carsApi
+			.getColorsList()
+			.then((data) => {
+				commit("setColors", data)
+			})
+			.catch((error: any) => {
+				console.error(error)
+			})
 	}
 }
 
 export const getters: GetterTree<RootState, RootState> = {
 	getCars: (state) => state.list,
-	getCar: (state) => state.detail
+	getCar: (state) => state.detail,
+	getBrands: (state) => state.brands,
+	getModels: (state) => state.models,
+	getColors: (state) => state.colors
 }
