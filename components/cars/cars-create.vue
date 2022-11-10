@@ -63,7 +63,13 @@
 				<a-input placeholder="Price ₽" type="number" v-model="data.price_rub" />
 			</div>
 			<div class="cars__create-row">
-				<ui-button @click="createCar" :loading="isLoading">Create</ui-button>
+				<ui-button
+					@click="createCar"
+					:loading="isLoading"
+					:disabled="isDisabledButton"
+				>
+					Create
+				</ui-button>
 			</div>
 		</ui-modal>
 	</div>
@@ -75,6 +81,11 @@ import { mapActions, mapGetters } from "vuex"
 
 // Types
 import type { CarsService } from "@drom/types"
+type Data = CarsService.CarCreate & {
+	year: any
+	hp: any
+	price_rub: any
+}
 
 export default Vue.extend({
 	name: "cars-create",
@@ -89,10 +100,10 @@ export default Vue.extend({
 				brand_id: 1,
 				model_id: 1,
 				color_id: 1,
-				year: 1,
-				hp: 1,
-				price_rub: 1
-			} as CarsService.CarCreate
+				year: null,
+				hp: null,
+				price_rub: null
+			} as Data
 		}
 	},
 	computed: {
@@ -100,7 +111,10 @@ export default Vue.extend({
 			brands: "cars/getBrands",
 			models: "cars/getModels",
 			colors: "cars/getColors"
-		})
+		}),
+		isDisabledButton(): boolean {
+			return !(this.data.year && this.data.hp && this.data.price_rub)
+		}
 	},
 	methods: {
 		...mapActions({
@@ -122,6 +136,9 @@ export default Vue.extend({
 		defaultValue(name: "brands" | "models" | "colors"): string {
 			return this?.[name]?.[0]?.name || ""
 		},
+		resetData(): void {
+			this.data.year = this.data.hp = this.data.price_rub = null
+		},
 		async createCar(): Promise<void> {
 			this.isLoading = true
 
@@ -131,6 +148,8 @@ export default Vue.extend({
 				this.$message.success("Your car is created")
 
 				this.isModal = false
+
+				this.resetData()
 			} catch (error: any) {
 				this.$message.error("Failed to create car")
 			}
