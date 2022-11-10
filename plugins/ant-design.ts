@@ -7,6 +7,7 @@ import type { Message } from "ant-design-vue/types/message"
 
 import {
 	Card,
+	Input,
 	Pagination,
 	Tooltip,
 	Tag,
@@ -35,6 +36,7 @@ Vue.use(Popover)
 Vue.use(Menu)
 Vue.use(Result)
 Vue.use(Tabs)
+Vue.use(Input)
 Vue.use(Select)
 
 const messagePlugin: Plugin = (_, inject) => {
