@@ -2,7 +2,7 @@
 	<div class="cars__create" :class="{ _loading: isLoading }">
 		<ui-button @click="isModal = true">Create car</ui-button>
 		<ui-modal
-			title="Создать объявление"
+			title="Create car ad"
 			:value="isModal"
 			destroyOnClose
 			centered

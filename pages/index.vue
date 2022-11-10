@@ -1,6 +1,5 @@
 <template>
 	<div class="cars">
-		<cars-create v-if="!isLoading" />
 		<cars-filter />
 		<cars-list />
 		<cars-articles />
@@ -12,7 +11,6 @@ import Vue from "vue"
 import { mapActions, mapGetters } from "vuex"
 
 // Components
-import carsCreate from "~/components/cars/cars-create.vue"
 import carsFilter from "~/components/cars/cars-filter.vue"
 import carsList from "~/components/cars/cars-list.vue"
 import carsArticles from "~/components/cars/cars-articles.vue"
@@ -21,7 +19,6 @@ export default Vue.extend({
 	name: "index-page",
 	layout: "index",
 	components: {
-		carsCreate,
 		carsFilter,
 		carsList,
 		carsArticles

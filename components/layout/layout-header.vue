@@ -17,6 +17,7 @@
 				</div>
 			</div>
 			<div class="layout__header-auth">
+				<cars-create />
 				<!--			Todo		-->
 				<ui-button>Регистрация</ui-button>
 				<ui-button>Войти</ui-button>
@@ -31,10 +32,14 @@ import Vue from "vue"
 // Svg
 import logoSvg from "~/assets/img/logo.svg"
 
+// Components
+import carsCreate from "~/components/cars/cars-create.vue"
+
 export default Vue.extend({
 	name: "layout-header",
 	components: {
-		logoSvg
+		logoSvg,
+		carsCreate
 	},
 	data() {
 		return {
