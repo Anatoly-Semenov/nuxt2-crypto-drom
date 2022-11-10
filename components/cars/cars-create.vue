@@ -82,9 +82,9 @@ import { mapActions, mapGetters } from "vuex"
 // Types
 import type { CarsService } from "@drom/types"
 type Data = CarsService.CarCreate & {
-	year: null
-	hp: null
-	price_rub: null
+	year: any
+	hp: any
+	price_rub: any
 }
 
 export default Vue.extend({
