@@ -45,7 +45,7 @@ export default Vue.extend({
 			getBrands: "cars/getBrands"
 		}),
 		firstBrandId(): number {
-			return this.getBrands[0].id || 0
+			return this.getBrands?.[0]?.id || 0
 		}
 	},
 	methods: {
