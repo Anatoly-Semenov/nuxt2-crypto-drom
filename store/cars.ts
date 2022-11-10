@@ -6,7 +6,7 @@ export const state = () => ({
 	list: null as null | CarsService.Car[],
 	detail: null as null | CarsService.Car,
 	brands: null as null | CarsService.Brand[],
-	models: null as null | CarsService.Model[],
+	models: [] as CarsService.Model[],
 	colors: null as null | CarsService.Color[]
 })
 
@@ -99,18 +99,9 @@ export const actions: ActionTree<RootState, RootState> = {
 				console.error(error)
 			})
 	},
-	async createCar(
-		{ commit },
-		{
-			id,
-			car
-		}: {
-			id: string
-			car: CarsService.CarCreate
-		}
-	): Promise<void> {
+	async createCar({ commit }, car: CarsService.CarCreate): Promise<void> {
 		await this.$carsApi
-			.createCar(id, car)
+			.createCar(car)
 			.then((data) => {
 				commit("createCar", data)
 			})
@@ -128,9 +119,9 @@ export const actions: ActionTree<RootState, RootState> = {
 				console.error(error)
 			})
 	},
-	async fetchModels({ commit }): Promise<void> {
+	async fetchModels({ commit }, brandId: number | string): Promise<void> {
 		await this.$carsApi
-			.getModelsList()
+			.getModelsList(brandId)
 			.then((data) => {
 				commit("setModels", data)
 			})

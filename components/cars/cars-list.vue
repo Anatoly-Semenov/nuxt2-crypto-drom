@@ -22,7 +22,7 @@
 		<a-pagination
 			class="cars__list-pagination"
 			v-model="page"
-			total="50"
+			:total="50"
 			show-less-items
 		/>
 	</div>

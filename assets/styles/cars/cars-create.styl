@@ -1,0 +1,21 @@
+.cars__create
+	display flex
+	flex-direction column
+	position relative
+
+	&-img
+		height 210px
+		width 100%
+		object-fit cover
+		flex-center()
+
+	&-row
+		width 100%
+		display flex
+
+		& > *
+			width 100% !important
+			margin-top $gap
+
+			&:not(:last-child)
+				margin-right $gap

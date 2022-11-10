@@ -45,7 +45,6 @@ export default Vue.extend({
 			return this.data?.img_preview || ""
 		},
 		priceFiat(): string {
-			// Todo: temporary hide
 			return `${this.data?.price_rub} ₽`
 		},
 		priceCrypto(): string {
