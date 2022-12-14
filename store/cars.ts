@@ -1,9 +1,10 @@
 // Types
 import type { MutationTree, ActionTree, GetterTree } from "vuex"
-import type { CarsService } from "@drom/types"
+import type { CarsService, ResponseList, Meta } from "@drom/types"
 
 export const state = () => ({
 	list: null as null | CarsService.Car[],
+	meta: {} as Meta,
 	detail: null as null | CarsService.Car,
 	brands: null as null | CarsService.Brand[],
 	models: [] as CarsService.Model[],
@@ -13,13 +14,14 @@ export const state = () => ({
 export type RootState = ReturnType<typeof state>
 
 export const mutations: MutationTree<RootState> = {
-	setCarsList(state, payload): void {
-		state.list = payload
+	setCarsList(state, { data, meta }: ResponseList<CarsService.Car>): void {
+		state.list = data
+		state.meta = meta
 	},
-	setCarDetail(state, payload): void {
+	setCarDetail(state, payload: CarsService.Car): void {
 		state.detail = payload
 	},
-	deleteCar(state, payload): void {
+	deleteCar(state, payload: CarsService.Car): void {
 		const index = state.list!.findIndex(({ id }) => id === payload.id)
 
 		state.list!.splice(index, 1)
@@ -52,7 +54,7 @@ export const mutations: MutationTree<RootState> = {
 export const actions: ActionTree<RootState, RootState> = {
 	async fetchCars({ commit }): Promise<void> {
 		await this.$carsApi
-			.getCars()
+			.getCars({})
 			.then((data) => {
 				commit("setCarsList", data)
 			})
